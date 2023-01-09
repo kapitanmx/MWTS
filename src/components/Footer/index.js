@@ -4,8 +4,10 @@ import LogoImg from '../../assets/logo-grey.svg';
 import FacebookIcon from '../../assets/facebook-logo.svg';
 import InstaIcon from '../../assets/instagram-logo.svg';
 import WhatsAppIcon from '../../assets/whatsapp-logo.svg';
-// Styled Components
-import { Wrapper, Content, IconContainer, Logo, ContactButton, ContactContainer, TextContainer, FooterEnd} from './Footer.styles';
+// Components
+import Button from '../Button';
+// Styles
+import { Wrapper, Content, IconContainer, Logo, ContactContainer, TextContainer, FooterEnd} from './Footer.styles';
 
 const Footer = () => {
     const currentYear = () => {
@@ -18,20 +20,18 @@ const Footer = () => {
             <Content>
                 <ContactContainer>
                     <IconContainer>
-                        <img src={FacebookIcon} alt=""/>
-                        <img src={InstaIcon} alt=""/>
-                        <img src={WhatsAppIcon} alt=""/>
+                        <a href="https://www.facebook.com/mwtstudio"><img src={FacebookIcon} alt=""/></a>
+                        <a href="https://www.instagram.com/mwts_studio/"><img src={InstaIcon} alt=""/></a>
+                        <a href=""><img src={WhatsAppIcon} alt=""/></a>
                     </IconContainer>
-                    <ContactButton>
-                        <p>Skontaktuj się z nami</p>
-                    </ContactButton>
+                    <a href="/kontakt"><Button isPrimary={true} text='Skontaktuj się z nami'/></a>
                 </ContactContainer>
                 <TextContainer>
                     <div>
                         <h3>Dane kontaktowe:</h3>
                         <p>
-                            Telefon: +48 111 111 111<br/><br/>
-                            E-mail: kontakt@mwts.pl<br/><br/>
+                            Telefon: +48 664 412 219<br/><br/>
+                            E-mail: <a href="mailto:kontakt@mwts.pl">kontakt@mwts.pl</a><br/><br/>
                         </p>
                     </div>
                     <div>

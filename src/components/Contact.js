@@ -27,6 +27,12 @@ const Section = styled.div`
     flex-direction: column;
     margin: 20px auto;
     padding: 20px;
+    h2 {
+        padding: 20px;
+    }
+    p {
+        padding: 20px;
+    }
     @media screen and (max-width: 768px) {
         margin: 60px auto;
     }
@@ -48,8 +54,10 @@ const Contact = () => {
         <>
             <SectionHero
                 title="Skontaktuj się z nami"
+                isButton={true}
+                route='kontakt'
             />
-            <Wrapper data-aos="fade-up">
+            <Wrapper data-aos="fade-up" id="kontakt">
                 <Section>
                     <h2 data-aos="fade-up">Formularz kontaktowy</h2>
                     <ContactForm data-aos="fade-up"/>

@@ -29,19 +29,22 @@ export const GlobalStyle = createGlobalStyle`
             font-weight: 400;
             color: var(--black);
             @media screen and (max-width: 1024px) {
-                font-size: 3.2rem;
+                font-size: 4rem;
+            }
+            @media screen and (max-width: 768px) {
+                font-size: 3.4rem;
             }
         }
 
         h2 {
             font-size: 3rem;
-            @media screen and (max-width: 768px) {
+            @media screen and (max-width: 1024px) {
                 font-size: 2.5rem;
             }
         }
 
         h3 {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 600;
         }
 
@@ -49,6 +52,11 @@ export const GlobalStyle = createGlobalStyle`
             font-size: 1.1rem;
             color: var(--black);
             font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--white);
         }
     }
 

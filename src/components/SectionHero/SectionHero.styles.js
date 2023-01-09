@@ -36,7 +36,7 @@ export const Content = styled.div`
         color: var(--white);
     }
     @media screen and (max-width: 768px) {
-        margin: 0 auto;
+        margin: 0;
         padding: 30px 30px;
         h2 {
             align-self: flex-start;
@@ -47,17 +47,18 @@ export const Content = styled.div`
 
 export const Cube = styled.img`
     position: absolute;
-    top: 30%;
+    top: 30vh;
     right: 0;
     width: 15%;
     z-index: -1;
     height: auto;
     object-fit: cover;
-    @media screen and (max-width: 1024px) {
+    /* @media screen and (max-width: 1024px) {
         top: 35%;
-    }
+    } */
     @media screen and (max-width: 430px) {
         width: 35%;
+        top: 40vh;
     }
 `;
 
@@ -84,22 +85,20 @@ export const Button = styled.button`
     border: 2px solid var(--white);
     border-radius: 40px;
     background: transparent;
-    -webkit-transition: all 1s ease-in;
-    -moz-transition: all 1s ease-in;
-    -o-transition: all 1s ease-in;
-    transition: all 1s ease-in;
-    &:hover {
+    transition: all 0.5s;
+    :hover {
         background: var(--white);
-        color: var(--black);
         p {
             color: var(--black);
-        }
+        }    
     }
+    
     @media screen and (max-width: 430px) {
         align-self: flex-start;
         margin: 50% auto;
         padding: 5px 10px;
     }
+
     p {
         font-weight: 600;
         color: var(--white);

@@ -1,7 +1,13 @@
 import React from 'react';
 // Components
 import Hero from '../components/Hero';
+import OfferIcons from './OfferIcons';
+import SpinnerBig from './SpinnerBig';
 import View3D from './View3D';
+import Product from './Product';
+import ProductCarousel, { CarouselItem } from './ProductCarousel';
+// Hooks
+import Loading from './Hooks/loading';
 // Styles
 import styled from 'styled-components';
 // Images
@@ -26,52 +32,35 @@ const Section = styled.div`
     }
 `;
 
-const ButtonContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 50px auto;
-    padding: 20px 20px;
-    border-bottom: 2px solid var(--black);
-    div {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        justify-content: center;
-        border-radius: 150px;
-        margin: 0 30px;
-    }
-    @media screen and (max-width: 900px) {
-        flex-direction: column;
-    }
-`;
+const Home = ({title1, title2, products, offers}) => {
 
-
-const Home = ({title1, title2}) => {
-    return (
-        <>
-            <Hero/>
-            <Section>
-                <h2>{title1}</h2>
-                <ButtonContainer>
-                    <div>
-                        <img src={Icon3D} alt=""/>
-                        <h3>Druk 3D</h3>
-                    </div>
-                    <div>
-                        <img src={IdeaIcon} alt=""/>
-                        <h3>Realizacja potrzeb klienta</h3>
-                    </div>
-                    <div>
-                        <img src={SketchIcon} alt=""/>
-                        <h3>Projektowanie 3D</h3>
-                    </div>
-                </ButtonContainer>
-                <h2>{title2}</h2>
-            </Section>
-            <View3D />
-        </>
-    );
+    if (Loading()) {
+        return <SpinnerBig />
+    } else {
+        return (
+            <>
+                <Hero/>
+                <Section>
+                    <h2>{title1}</h2>
+                    <OfferIcons offers={offers}/>
+                    {/* <h2>{title2}</h2>
+                    <ProductCarousel>
+                        {products.map(product => (
+                            <CarouselItem>
+                                <Product
+                                    name={product.name}
+                                    description={product.description}
+                                    img={product.img}
+                                    link={product.link}
+                                />
+                            </CarouselItem>
+                        ))}
+                    </ProductCarousel> */}
+                </Section>
+                {/* <View3D /> */}
+            </>
+        );
+    }
 }
 
 export default Home;

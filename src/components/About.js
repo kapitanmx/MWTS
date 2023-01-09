@@ -4,11 +4,13 @@ import SectionHero from './SectionHero';
 // Styles
 import styled from 'styled-components';
 import Plan from '../assets/plan.jpg';
+import PlanMobile from '../assets/plan_mobile.svg';
 // AOS
 import AOS from 'aos';
 import 'aos/dist/aos.css';  
 // Imgs
 import AboutImg from '../assets/about_image.jpeg';
+import { useEffect } from 'react';
 
 AOS.init();
 
@@ -23,105 +25,83 @@ const Wrapper = styled.div`
 const Section = styled.div`
     max-width: var(--maxWidth);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    padding: 20px 20px;
-    margin: 50px auto;
+   
+    margin: 0 auto;
     img {
-        width: 50%;
+        width: 100%;
         height: auto;
         border-radius: 40px;
         margin: 0 auto;
         padding: 20px;
     }
-    @media screen and (max-width: 1024px) {
-        flex-direction: column;
-        img {
-            width: 100%;
-            margin: 0;
-        }
-    }
+
     p {
         font-size: 1.8rem;
     }
+
     div {
         display: flex;
         flex-direction: column;
         margin: 0 auto;
         padding: 20px;
     }
-`;
 
-const IconWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0 auto;
-    padding: 20px 20px;
-    img {
-        display: flex;
+    @media screen and (max-width: 1024px) {
         flex-direction: column;
-        justify-content: center;
-        padding: 40px 40px;
-        width: 100%;
-        height: auto;
-        margin: 0 auto;
+        margin: 20px auto;
+        padding: 10px;
+        img {
+            width: 100%;
+            margin: 0;
+        }
+        p {
+            font-size: 1.3rem;
+        }
     }
 `;
 
-const About = () => {
+const About = (
+    {title1, 
+    title2, 
+    title3, 
+    content, 
+    content3,
+}) => {
     return (
         <>
             <SectionHero
                 title="O tym, kim jesteśmy i co robimy, słów kilka"
                 isButton={true}
+                route='studio'
             />
-            <Wrapper>
-                <Section>
-                    <img data-aos="fade-up" src={AboutImg} alt=""/>
+            <Wrapper id="studio">
+                <Section id="st-section">
                     <div>
-                        <h2 data-aos="fade-up">Słowem wstępu</h2>
-                        <p data-aos="fade-up">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Vestibulum lobortis luctus libero.
-                            Aliquam fringilla varius porta.
-                            Donec rutrum purus nec lacinia semper.
-                            Aliquam efficitur sodales porta.
-                            Mauris pharetra tortor enim. 
-                            Aliquam fringilla elit nec sollicitudin sollicitudin.
-                            Nullam ac iaculis metus. 
-                            Duis vitae ex et magna faucibus ultricies sit amet gravida lectus.
-                            Quisque vel tortor nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
-                        </p>
+                        <h2 data-aos="fade-up">{title1}</h2>
+                        {content.map(element => (
+                            <>
+                                <h3 data-aos="fade-up">{element.subtitle}</h3>
+                                <p data-aos="fade-up">{element.text}</p>
+                            </>
+                        ))}
                     </div>
                 </Section>
                 <Section>
                     <div>
-                        <h2 data-aos="fade-up">Przykładowy przebieg zlecenia</h2>
-                        <IconWrapper data-aos="fade-up">
-                            <img src={Plan} alt="" />
-                        </IconWrapper>
+                        <h2 data-aos="fade-up">{title2}</h2>
+                        <img data-aos="fade-up" src={window.innerWidth < 768 ? PlanMobile : Plan} alt="" />
                     </div>
                 </Section>
                 <Section>
                     <div>
-                        <h2 data-aos="fade-up">Wizja, misja oraz cele</h2>
-                        <p data-aos="fade-up">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Vestibulum lobortis luctus libero.
-                            Aliquam fringilla varius porta.
-                            Donec rutrum purus nec lacinia semper.
-                            Aliquam efficitur sodales porta.
-                            Mauris pharetra tortor enim. 
-                            Aliquam fringilla elit nec sollicitudin sollicitudin.
-                            Nullam ac iaculis metus. 
-                            Duis vitae ex et magna faucibus ultricies sit amet gravida lectus.
-                            Quisque vel tortor nibh. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
-                        </p>
+                        <h2 data-aos="fade-up">{title3}</h2>
+                        <p data-aos="fade-up">{content3}</p>
                     </div>
-                    <img data-aos="fade-up"src={AboutImg} alt=""/>
                 </Section>
             </Wrapper>
         </>
-
     );
 }
 

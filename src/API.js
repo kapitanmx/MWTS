@@ -4,6 +4,7 @@ import {
 
 const defaultConfig = {
     method: 'POST',
+    mode: 'no-cors',
     headers: {
         'Content-Type' : 'application/json'
     }
@@ -18,11 +19,12 @@ const APIConfig = {
         const endpoint = `${BASE_URL}gallery/${photoId}`
         return await (await fetch(endpoint)).json();
     },
-    fetchFormData: async (name, email, message) => {
-        const endpoint = `${BASE_URL}/form?name=${name}&email=${email}&message=${message}`;
+    fetchFormData: async (name, email, phone, message) => {
+        const endpoint = `${BASE_URL}contact?name=${name}&email=${email}&phone=${phone}&message=${message}`;
         const bodyData = {
             name,
             email,
+            phone,
             message,
         };
         return await (
@@ -32,6 +34,14 @@ const APIConfig = {
             })
         ).json();
     },
+    fetchProducts: async (searchTerm, page) => {
+        const endpoint = `${BASE_URL}/products/${searchTerm}&page=${page}`;
+        return await (await fetch(endpoint)).json();
+    },
+    fetchProduct: async productId => {
+        const endpoint = `${BASE_URL}/products/${productId}`
+        return await (await fetch(endpoint)).json();
+    }
 }
 
 export default APIConfig;

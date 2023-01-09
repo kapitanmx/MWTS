@@ -54,25 +54,41 @@ export const StyledTextArea = styled.textarea`
 
 export const StyledButton = styled.button`
     display: flex;
-    background: var(--lightGrey);
-    color: #000
-    flex-direction: column;
-    justify-content: center;
-    margin: 10px auto;
-    padding: 20px 40px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: flex-start;
+    cursor: pointer;
+    font-weight: 300;
+    margin: 30px;
+    padding: 5px 50px;
     border-radius: 40px;
-    border: ${({error}) => (error ? '3px solid red' : '3px solid black')};
-    text-decoration: none;
-    outline: none;
-    transition: 0.5s ease-in-out;
-    /* &:hover {
-        background-color: #000;
-        color: white;
-        border: 3px solid white; */
-} 
+    background: transparent;
+    transition: all 0.5s;
+    border: ${({error}) => (error ? '2px solid red' : '2px solid black')};
+    p {
+        font-weight: 600;
+    }
+    :hover {
+        background: var(--black);
+        p {
+            color: var(--white);
+        }    
+    }
+    
+    @media screen and (max-width: 430px) {
+        align-self: flex-start;
+        margin: 10% auto;
+        padding: 10px 20px;
+        p {
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--white);
+        }
+    }
 `;
 
 export const ErrorMessage = styled.p`
     color: red;
-    font-size: 1rem;
+    font-size: 1rem !important;
+    align-self: center;
 `;

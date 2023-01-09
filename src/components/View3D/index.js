@@ -1,6 +1,6 @@
 import React from 'react';
-import { Canvas } from "@react-three/fiber";
-import { useGLTF, Environment, OrbitControls } from '@react-three/drei';
+import { Canvas, useThree } from "@react-three/fiber";
+import { useGLTF, OrbitControls } from '@react-three/drei';
 import { Wrapper } from './View3D.styles';
 import modelUrl from './models/lambo.glb';
 
@@ -50,21 +50,25 @@ function Model(props) {
         <mesh geometry={nodes.Object_40.geometry} material={materials['Material.017']} />
       </group>
     </group>
-  )
+  );
 }
 
 useGLTF.preload(modelUrl);
 
-const View3D = () => (
-	<Wrapper>
-		<Canvas>	
-			<ambientLight intensity={0.1}/>
-			<pointLight position={[10, 10, 10]} />
-			<directionalLight color="white" position={[0, 0, 5]} />
-			<Model />
-			<OrbitControls />
-		</Canvas>
-	</Wrapper>
-)
+const deg2rad = degrees => degrees * (Math.PI / 180);
+
+const View3D = () => {
+  return (
+    <Wrapper>
+      <Canvas>	
+        <ambientLight intensity={0.1}/>
+        <pointLight position={[10, 10, 10]} />
+        <directionalLight color="white" position={[0, 5, 5]} />
+        <Model />
+        <OrbitControls />
+      </Canvas>
+    </Wrapper>
+  );
+}
 
 export default View3D;

@@ -36,12 +36,11 @@ export const Content = styled.div`
     }
     h2 {
         align-self: flex-end;
-        padding: 0 100px;
+        padding: 20px;
         color: var(--white);
     }
     @media screen and (max-width: 768px) {
         h2 {
-        
             padding: 0;
         }
     }
@@ -54,9 +53,19 @@ export const Img = styled.img`
     z-index: 0;
     width: 20%;
     height: auto;
+    animation: pulse 10s infinite;
     @media screen and (max-width: 768px) {
         width: 50%;
         left: 10%;
+    }
+    @keyframes pulse{
+        0% {
+            transform: scale(1);
+        } 50% {
+            transform: scale(1.1);
+        } 100% {
+            transform: scale(1);
+        }
     }
 `;
 
@@ -69,6 +78,7 @@ export const Button = styled.div`
     padding: 10px 100px;
     border-radius: 40px;
     background: transparent;
+    transition: all 0.5s;
     border: 3px solid var(--white);
     p {
         color: var(--white);

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Wrapper, StyledField, FieldBox, StyledTextArea, StyledButton, ErrorMessage} from './ContactForm.styles';
 // API
 import API from '../../API';
+import { TriangleStripDrawMode } from 'three';
 
 const ContactForm = () => {
     const [data, setData] = useState({});
@@ -17,6 +18,7 @@ const ContactForm = () => {
             await API.fetchFormData(
                 formData.name,
                 formData.email,
+                formData.phone,
                 formData.message
             );
         } catch (error) {
@@ -35,7 +37,7 @@ const ContactForm = () => {
     }
 
     const handlePhoneNumber = target => {
-        if (typeof target.value !== "number") {
+        if (target.value.length < 9) {
             setPhoneInputError(true);
             return;
         }

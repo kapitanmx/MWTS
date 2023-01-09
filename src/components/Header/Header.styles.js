@@ -11,14 +11,16 @@ export const Wrapper = styled.div`
     position: fixed;
     z-index: 5;
     background: ${({isScrolled}) => isScrolled ? 'white' : 'transparent'};
-    /* transform: ${({isScrolledDown}) => isScrolledDown ? 'translateY(-100%)' : 'translateY(0)'};
+    transform: ${({hide}) => hide};
     animation-timing-function: ease-in-out;
-    animation-duration: 2s; */
+    animation-duration: 2s;
     margin: 0 auto;
-    padding: 5px;
     &:before, :after {
         box-sizing: border-box;
         -webkit-font-smoothing: antialiased;
+    }
+    @media screen and (max-width: 768px) {
+        padding: 10px;
     }
 `;
 
@@ -51,7 +53,7 @@ export const Logo = styled.img`
     flex-direction: row;
     align-self: left;
     margin: 0 auto;
-    width: ${({isScrolled}) => isScrolled ? '10%' : '20%'};
+    width: 20%;
     height: auto;
     @media screen and (max-width: 768px) {
         width: 50%;

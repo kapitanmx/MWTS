@@ -7,6 +7,23 @@ import { Wrapper, Content, Logo, LinkButton, MobileMenu, Burger, Icon } from './
 const Header = ({links}) => {
     const [open, setOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    let navHideStyle = ''
+
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            var lastScrollTop = 0;
+            var st = window.pageYOffset || document.documentElement.scrollTop;
+            if (st > lastScrollTop) {
+                navHideStyle = 'translateY(-100%)';
+                return;
+            }
+            navHideStyle = 'translateY(0)';
+            lastScrollTop = st;
+            return;
+        }, false);
+        window.removeEventListener('scroll', () => {return;});
+    }, []);
+
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
@@ -20,13 +37,20 @@ const Header = ({links}) => {
         window.removeEventListener('scroll', () => {return;});
     }, []);
 
+    const goToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    };
+
     return (
-        <Wrapper  isScrolled={isScrolled}>
+        <Wrapper isScrolled={isScrolled} hide={navHideStyle}>
             <Logo src={isScrolled ? LogoImg : LogoImgWhite} href="/"/>
             <Content>
                 {links.map(link => (
                     <Link to={`/${link.toLowerCase()}`}>
-                        <LinkButton isScrolled={isScrolled}>
+                        <LinkButton isScrolled={isScrolled} onClick={goToTop}>
                             {link}
                         </LinkButton>
                     </Link>
